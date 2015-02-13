@@ -1,9 +1,12 @@
 {
-  "name": "swipebox",
+  "name": "swipebox-ttab",
   "version": "1.3.2",
   "main": [
     "src/js/jquery.swipebox.js",
-    "src/css/swipebox.css"
+    "src/css/swipebox.css",
+    "src/img/icons.png",
+    "src/img/icons.svg",
+    "src/img/loader.gif"
   ],
   "ignore": [
     "**/.*",
