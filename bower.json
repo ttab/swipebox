@@ -4,5 +4,14 @@
   "main": [
     "src/js/jquery.swipebox.js",
     "src/css/swipebox.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo",
+    "grunt"
   ]
 }
