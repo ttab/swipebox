@@ -21,7 +21,8 @@
 				loopAtEnd: false,
 				autoplayVideos: false,
 				queryStringData: {},
-                toggleClassOnLoad: ''
+                toggleClassOnLoad: '',
+                loadMore: null
 			},
 
 			plugin = this,
@@ -825,12 +826,31 @@
 			},
 
 			/**
+			* Add elements
+			*/
+			addElements : function () {
+				moreElements = plugin.settings.loadMore();
+				$.each( moreElements,  function(i, el) {
+					$( '#swipebox-slider' ).append( '<div class="slide"></div>' );
+					elements.push( {
+						href: el.href,
+						title: el.title
+					} );
+				} );
+			},
+
+			/**
 			 * Get next slide
 			 */
 			getNext : function () {
 				var $this = this,
 					src,
 					index = $( '#swipebox-slider .slide' ).index( $( '#swipebox-slider .slide.current' ) );
+				// Load more elements if loadMore function is provided
+				if ( index + 2 === elements.length && plugin.settings.loadMore) {
+					$this.addElements();
+				}
+
 				if ( index + 1 < elements.length ) {
 
 					src = $( '#swipebox-slider .slide' ).eq( index ).contents().find( 'iframe' ).attr( 'src' );
