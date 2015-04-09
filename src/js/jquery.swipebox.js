@@ -829,12 +829,13 @@
 			* Add elements
 			*/
 			addElements : function () {
-				moreElements = plugin.settings.loadMore();
-				$.each( moreElements,  function(i, el) {
-					$( '#swipebox-slider' ).append( '<div class="slide"></div>' );
-					elements.push( {
-						href: el.href,
-						title: el.title
+				plugin.settings.loadMore( function(moreElements) {
+					$.each( moreElements,  function(i, el) {
+						$( '#swipebox-slider' ).append( '<div class="slide"></div>' );
+						elements.push( {
+							href: el.href,
+							title: el.title
+						} );
 					} );
 				} );
 			},
@@ -847,7 +848,7 @@
 					src,
 					index = $( '#swipebox-slider .slide' ).index( $( '#swipebox-slider .slide.current' ) );
 				// Load more elements if loadMore function is provided
-				if ( index + 2 === elements.length && plugin.settings.loadMore) {
+				if ( index > elements.length - 3 && plugin.settings.loadMore) {
 					$this.addElements();
 				}
 
