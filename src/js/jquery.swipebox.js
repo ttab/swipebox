@@ -22,7 +22,8 @@
 				autoplayVideos: false,
 				queryStringData: {},
                 toggleClassOnLoad: '',
-                loadMore: null
+                loadMore: null,
+                onSwipe: null
 			},
 
 			plugin = this,
@@ -686,6 +687,11 @@
 					$this.loadMedia( src, function() {
 						slide.removeClass( 'slide-loading' );
 						slide.html( this );
+						
+						if ( plugin.settings.onSwipe ) {
+							plugin.settings.onSwipe();
+						}
+						
 					} );
 				} else {
 					slide.html( $this.getVideo( src ) );
