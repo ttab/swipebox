@@ -1,6 +1,6 @@
 {
   "name": "swipebox-ttab",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "main": [
     "src/js/jquery.swipebox.js",
     "src/css/swipebox.css",
