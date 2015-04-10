@@ -624,6 +624,9 @@
 				} else if ( index === elements.length - 1 && plugin.settings.loopAtEnd !== true ) {
 					$( '#swipebox-next' ).addClass( 'disabled' );
 				}
+				if ( plugin.settings.onSwipe ) {
+					plugin.settings.onSwipe();
+				}
 			},
 
 			/**
@@ -671,7 +674,6 @@
 				var $this = this,
 					src,
 					slide;
-
 				if ( elements[ index ] !== undefined ) {
 					src = elements[ index ].href;
 				}
@@ -687,11 +689,6 @@
 					$this.loadMedia( src, function() {
 						slide.removeClass( 'slide-loading' );
 						slide.html( this );
-						
-						if ( plugin.settings.onSwipe ) {
-							plugin.settings.onSwipe();
-						}
-						
 					} );
 				} else {
 					slide.html( $this.getVideo( src ) );
